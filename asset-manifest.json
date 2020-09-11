@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/AnimeTest/static/css/main.842843b0.chunk.css",
+    "main.js": "/AnimeTest/static/js/main.88aca184.chunk.js",
+    "main.js.map": "/AnimeTest/static/js/main.88aca184.chunk.js.map",
+    "runtime-main.js": "/AnimeTest/static/js/runtime-main.d03219a1.js",
+    "runtime-main.js.map": "/AnimeTest/static/js/runtime-main.d03219a1.js.map",
+    "static/css/2.9f63dd42.chunk.css": "/AnimeTest/static/css/2.9f63dd42.chunk.css",
+    "static/js/2.38e6b273.chunk.js": "/AnimeTest/static/js/2.38e6b273.chunk.js",
+    "static/js/2.38e6b273.chunk.js.map": "/AnimeTest/static/js/2.38e6b273.chunk.js.map",
+    "index.html": "/AnimeTest/index.html",
+    "precache-manifest.799a53b2b3e183ef5d606c2602fce305.js": "/AnimeTest/precache-manifest.799a53b2b3e183ef5d606c2602fce305.js",
+    "service-worker.js": "/AnimeTest/service-worker.js",
+    "static/css/2.9f63dd42.chunk.css.map": "/AnimeTest/static/css/2.9f63dd42.chunk.css.map",
+    "static/css/main.842843b0.chunk.css.map": "/AnimeTest/static/css/main.842843b0.chunk.css.map",
+    "static/js/2.38e6b273.chunk.js.LICENSE.txt": "/AnimeTest/static/js/2.38e6b273.chunk.js.LICENSE.txt",
+    "static/media/1.png": "/AnimeTest/static/media/1.eadb269a.png",
+    "static/media/10.png": "/AnimeTest/static/media/10.fc755b70.png",
+    "static/media/11.png": "/AnimeTest/static/media/11.5c344c43.png",
+    "static/media/12.png": "/AnimeTest/static/media/12.4d97dd1b.png",
+    "static/media/13.png": "/AnimeTest/static/media/13.2c2927b7.png",
+    "static/media/14.png": "/AnimeTest/static/media/14.982931fc.png",
+    "static/media/15.png": "/AnimeTest/static/media/15.482ef09f.png",
+    "static/media/16.png": "/AnimeTest/static/media/16.71fd4d96.png",
+    "static/media/2.png": "/AnimeTest/static/media/2.c31726ab.png",
+    "static/media/3.png": "/AnimeTest/static/media/3.c6ad33af.png",
+    "static/media/4.png": "/AnimeTest/static/media/4.63df1b1a.png",
+    "static/media/5.png": "/AnimeTest/static/media/5.f80f31d2.png",
+    "static/media/6.png": "/AnimeTest/static/media/6.a051ae3d.png",
+    "static/media/7.png": "/AnimeTest/static/media/7.5361fa08.png",
+    "static/media/8.png": "/AnimeTest/static/media/8.fa246997.png",
+    "static/media/9.png": "/AnimeTest/static/media/9.ebfaf017.png",
+    "static/media/result.png": "/AnimeTest/static/media/result.a4882cba.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d03219a1.js",
+    "static/css/2.9f63dd42.chunk.css",
+    "static/js/2.38e6b273.chunk.js",
+    "static/css/main.842843b0.chunk.css",
+    "static/js/main.88aca184.chunk.js"
+  ]
+}
