@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Config;
 use ATehnix\VkClient\Client;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,7 +17,7 @@ class VkClientServiceProvider extends ServiceProvider
 	{
 		$this->app->singleton(Client::class, function() {
 			$client = new Client();
-			$client->setDefaultToken(config('vk.accessToken'));
+			$client->setDefaultToken(Config::getData('vk_accessToken'));
 			
 			return $client;
 		});

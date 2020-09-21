@@ -183,7 +183,7 @@
 					});
 			},
 			uploadToDocs(file, title) {
-				console.log(file, title);
+				let that = this;
 
 				bridge.sendPromise("VKWebAppCallAPIMethod", {
 					"method": "docs.getUploadServer",
@@ -219,9 +219,16 @@
 						}).then((result) => {
 							const { response } = result;
 
-							if (response.graffiti)
+							if (response.graffiti || response.doc)
 							{
+								this.alert = true;
+								this.message = 'Стикеры успешно установлены!';
 								this.isInstallation = false;
+								
+								setTimeout(() => {
+									that.alert = false;
+									that.message = null;
+								}, 2000);
 							}
 						})
 						.catch(this.onError);

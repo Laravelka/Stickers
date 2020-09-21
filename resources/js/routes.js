@@ -10,15 +10,10 @@ import Sticker from '@/js/components/Sticker';
 import Payment from '@/js/components/Payment';
 import NotFound from '@/js/components/NotFound';
 
-import AdminHome from '@/js/components/Admin/Home';
-
-/*
-const Home = () => import('@/js/components/Home');
-const Error = () => import('@/js/components/Error');
-const Sticker = () => import('@/js/components/Sticker');
-const Payment = () => import('@/js/components/Payment');
-const NotFound = () => import('@/js/components/NotFound');
-*/
+import AdminHome from '@/js/components/Admin/AdminHome';
+import AdminStickers from '@/js/components/Admin/Stickers';
+import AdminSettings from '@/js/components/Admin/Settings';
+import AdminPaidStickers from '@/js/components/Admin/PaidStickers';
 
 const router = new VueRouter({
 	routes: [
@@ -37,7 +32,6 @@ const router = new VueRouter({
 			name: 'sticker',
 			component: Sticker
 		},
-		,
 		{
 			path: '/payment/:sticker_id',
 			name: 'payment',
@@ -47,6 +41,21 @@ const router = new VueRouter({
 			path: '/admin',
 			name: 'admin.home',
 			component: AdminHome
+		},
+		{
+			path: '/admin/stickers',
+			name: 'admin.stickers',
+			component: AdminStickers
+		},
+		{
+			path: '/admin/settings',
+			name: 'admin.settings',
+			component: AdminSettings
+		},
+		{
+			path: '/admin/paidStickers',
+			name: 'admin.paidStickers',
+			component: AdminPaidStickers
 		},
 		{
 			path: '*',

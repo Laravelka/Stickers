@@ -10,9 +10,11 @@ import '@/sass/app.scss';
 import App from '@/js/views/App';
 import Routes from '@/js/routes.js';
 import 'vuetify/dist/vuetify.min.css';
+import Alert from '@/js/components/Alert';
 import { randomInt } from '@/js/helpers/other';
 import { setCookie, getCookie } from '@/js/helpers/cookies';
 
+Vue.component('Alert', Alert);
 Vue.use(Vuetify);
 Vue.use(VuetifyUpload);
 Vue.use(VueAxios, axios);
@@ -40,13 +42,13 @@ window.bridge = bridge;
 Vue.router = Routes;
 
 Vue.router.beforeEach((to, from, next) => {
-	bridge.send("VKWebAppSetLocation", {"location": to.path});
-
 	if (Laravel.error && to.name !== 'error')
 	{
 		next({name: 'error'});
 	}
 	next();
+	
+	bridge.send("VKWebAppSetLocation", {"location": to.path});
 });
 
 const app = new Vue({
@@ -88,7 +90,7 @@ const app = new Vue({
 		if (Laravel.user.allow_notify != 1)
 			bridge.send("VKWebAppAllowNotifications");
 
-		bridge.send("VKWebAppGetAuthToken", {"app_id": 7080403, "scope": "docs"});
+		bridge.send("VKWebAppGetAuthToken", {"app_id": Laravel.appId, "scope": "docs"});
 
 		bridge.subscribe(async(event) => {
 			const { type, data } = event.detail;

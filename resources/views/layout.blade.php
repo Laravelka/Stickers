@@ -28,11 +28,10 @@
 			window.Laravel = {
 				user: user,
 				error: isError,
+				appId: {{ App\Config::getData('vk_appId') }},
 				message: message,
-				baseUrl: 'https://a622a99851c3.ngrok.io'
+				baseUrl: "{{ config('app.url') }}"
 			};
-
-			// https://ef1b2ecb72b1.ngrok.io/?vk_access_token_settings=docs&vk_app_id=7080403&vk_are_notifications_enabled=1&vk_is_app_user=1&vk_is_favorite=1&vk_language=ru&vk_platform=desktop_web&vk_ref=other&vk_user_id=310122979&sign=7iPaQzozHdexmOAU6OBVOCzowD-4QeTdymoMC_gTGUA
 		</script>
 		<script src="{{ mix('js/app.js') }}"></script>
 	</body>

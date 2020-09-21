@@ -14,10 +14,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('stickers/getAll', 'Api\StickerController@getAll');
-Route::get('stickers/getById', 'Api\StickerController@getById');
-Route::post('stickers/sendFiles', 'Api\StickerController@sendFiles');
-Route::get('stickers/installation', 'Api\StickerController@installation');
+Route::prefix('stickers')->group(function() {
+	Route::get('getAll', 'Api\StickerController@getAll');
+	Route::get('getById', 'Api\StickerController@getById');
+	Route::post('sendFiles', 'Api\StickerController@sendFiles');
+	Route::get('installation', 'Api\StickerController@installation');
+});
+
+Route::middleware(['isAdmin'])->prefix('admin')->group(function() {
+	Route::prefix('stickers')->group(function() {
+		Route::get('getAll', 'Api\Admin\StickersController@getAll');
+		Route::post('create', 'Api\Admin\StickersController@create');
+		Route::get('getById', 'Api\Admin\StickersController@getById');
+		Route::get('getPaid', 'Api\Admin\StickersController@getPaid');
+		Route::delete('delete', 'Api\Admin\StickersController@delete');
+	});
+	
+	Route::prefix('settings')->group(function() {
+		Route::get('getAll', 'Api\Admin\SettingsController@getAll');
+		Route::post('update', 'Api\Admin\SettingsController@update');
+	});
+});
 
 Route::any('qiwi/webhook', 'Api\PaymentController@qiwiWebhook');
 Route::any('yandex/webhook', 'Api\PaymentController@yandexWebhook');

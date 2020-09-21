@@ -35,7 +35,7 @@ class SignatureVerification
 		}
 		else
 		{
-			if (!User::isValid())
+			if (User::isValid())
 			{
 				return response()->view('layout', [
 					'error' => true,

@@ -9,14 +9,14 @@ use \Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use ATehnix\VkClient\Client;
 use Qiwi\Api\BillPayments;
-use App\{ User, Sticker, PaidSticker };
+use App\{ User, Sticker, Config, PaidSticker };
 use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
 	public function qiwiWebhook(Request $request, BillPayments $qiwi, Client $api) {
 		$check = $qiwi->checkNotificationSignature(
-			$request->header('X-Api-Signature-SHA256'), $request->all(), config('qiwi.secret')
+			$request->header('X-Api-Signature-SHA256'), $request->all(), Config::getData('qiwi_secret')
 		);
 		
 		Log::info('QIWI WEBHOOK: ', [$request->header('X-Api-Signature-SHA256'), $request->all()]);
@@ -33,7 +33,10 @@ class PaymentController extends Controller
 
 				if ($request['bill']['status']['value'] == 'PAID' && $paidSticker)
 				{
-					$api->setDefaultToken(config('vk.serviceKey'));
+					$paidSticker->is_paid = 1;
+					$paidSticker->save();
+					
+					$api->setDefaultToken(Config::getData('vk_serviceKey'));
 
 					$request = new VkRequest('notifications.sendMessage', [
 						'message' => 'Стикеры успешно оплачены!',
@@ -45,13 +48,10 @@ class PaymentController extends Controller
 					$response = $api->send($request);
 
 					Log::info('SEND NOTIFY: ', $response);
-
-					$paidSticker->is_paid = 1;
-					$paidSticker->save();
 				}
 				else
 				{
-					$api->setDefaultToken(config('vk.serviceKey'));
+					$api->setDefaultToken(Config::getData('vk_serviceKey'));
 
 					$request = new VkRequest('notifications.sendMessage', [
 						'message' => 'Счет не был оплачен!',
@@ -93,7 +93,7 @@ class PaymentController extends Controller
 					'sticker_id' => $sticker->id,
 				]);
 
-				$api->setDefaultToken(config('vk.serviceKey'));
+				$api->setDefaultToken(Config::getData('vk_serviceKey'));
 
 				$request = new VkRequest('notifications.sendMessage', [
 					'message' => 'Стикеры успешно оплачены!',
@@ -138,7 +138,7 @@ class PaymentController extends Controller
 					$fields = [
 						'billId' => $paidSticker->bill_id,
 						'amount' => $sticker->price,
-						'publicKey' => config('qiwi.public'),
+						'publicKey' => Config::getData('qiwi_public'),
 						'comment' => 'Покупка стикеров '.$sticker->title
 					];
 					$billResponse = $qiwi->createPaymentForm($fields);
@@ -166,7 +166,7 @@ class PaymentController extends Controller
 					$fields = [
 						'billId' => $billId,
 						'amount' => $sticker->price,
-						'publicKey' => config('qiwi.public'),
+						'publicKey' => Config::getData('qiwi_public'),
 						'comment' => 'Покупка стикеров '.$sticker->title
 					];
 					$billResponse = $qiwi->createPaymentForm($fields);

@@ -35,7 +35,7 @@ class User extends Authenticatable
 
 		ksort($sign_params);
 		$sign_params_query = http_build_query($sign_params);
-		$sign = rtrim(strtr(base64_encode(hash_hmac('sha256', $sign_params_query, config('vk.secretKey'), true)), '+/', '-_'), '=');
+		$sign = rtrim(strtr(base64_encode(hash_hmac('sha256', $sign_params_query, Config::getData('vk_secretKey'), true)), '+/', '-_'), '=');
 		
 		if (!empty(request()->input('sign')))
 		{

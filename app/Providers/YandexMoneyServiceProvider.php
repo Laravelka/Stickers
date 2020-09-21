@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Config;
 use YandexCheckout\Client;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,7 +17,7 @@ class YandexMoneyServiceProvider extends ServiceProvider
 	{
 		$this->app->singleton(Client::class, function() {
 			$client = new Client();
-			$client->setAuth(config('yandex.shopId'), config('yandex.secretKey'));
+			$client->setAuth(Config::getData('yandex_shopId'), Config::getData('yandex_secretKey'));
 			return $client;
 		});
 	}

@@ -33,7 +33,9 @@
 	</v-app>
 </template>
 <style>
-	
+	.w-100 {
+		width: 100%!important;
+	}
 </style>
 <script>
 	export default {

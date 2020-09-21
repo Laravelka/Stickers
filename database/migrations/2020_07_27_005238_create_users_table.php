@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
 			$table->string('nick');
 			$table->string('avatar');
 			$table->bigInteger('vk_id');
+			$table->boolean('is_admin')->default(0);
 			$table->text('api_token')->nullable();
 			$table->text('access_token')->nullable();
 			$table->boolean('allow_notify')->default(0);

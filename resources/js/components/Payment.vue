@@ -123,7 +123,7 @@
 							{key: 'need-fio', value: 'false'},
 							{key: 'need-email', value: 'false'},
 							{key: 'need-phone', value: 'false'},
-							{key: 'successURL', value: 'https://vk.com/app7080403#/sticker/' + this.sticker.id},
+							{key: 'successURL', value: 'https://vk.com/app' + Laravel.appId + '#/sticker/' + this.sticker.id},
 							{key: 'need-address', value: 'false'},
 							{key: 'targets', value: 'Стикеры ' + this.sticker.title},
 							{key: 'formcomment', value: 'Покупка стикеров ' + this.sticker.title},

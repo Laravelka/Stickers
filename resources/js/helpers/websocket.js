@@ -63,7 +63,7 @@ class Websocket {
 		let i = 0;
 		let query = '';
 
-		for(key in data)
+		for(vakey in data)
 		{
 			i++;
 			query += key + '=' + data[key] + (Object.keys(data).length !== i ? '&' : '');

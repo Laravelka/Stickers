@@ -27,15 +27,13 @@
 </template>
 <script>
 	export default {
-        props: {
-            source: String,
-        },
 		data: () => ({
-			title: 'Админ панель',
-			item: 1,
+			title: 'Панель',
+			item: 0,
 			items: [
-				{ text: 'Пользователи', icon: 'mdi-account-multiple', to: '/admin/users' },
-				{ text: 'Администраторы', icon: 'mdi-account-multiple', to: '/admin/admins' },
+				{ text: 'Настройки', icon: 'mdi-cog', to: '/admin/settings' },
+				{ text: 'Стикеры', icon: 'mdi-sticker-emoji', to: '/admin/stickers' },
+				{ text: 'Платежи', icon: 'mdi-credit-card-outline', to: '/admin/paidStickers' },
 			],
 		}),
 		created() {

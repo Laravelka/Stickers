@@ -35,10 +35,17 @@
 		</v-row>
 	</v-container>
 	<v-container v-else>
+		<div class="ma-4">
+			<v-btn rounded color="primary" v-if="user.is_admin == 1" :to="{
+			name: 'admin.home'}">
+				Панель управления
+			</v-btn>
+		</div>
+		<v-alert v-if="!stickers" type="error">Пока что пусто</v-alert>
 		<v-card
+			v-else
 			class="mb-3"
 			:key="index"
-			v-if="stickers"
 			v-for="(stick, index) in stickers"
 			:to="{name: 'sticker', params: {id: stick.id}}"
 		>
@@ -78,7 +85,6 @@
 				</v-avatar>
 			</div>
 		</v-card>
-		<v-alert v-else type="error">Пока что пусто</v-alert>
 	</v-container>
 </template>
 
@@ -87,6 +93,7 @@
 
 	export default {
 		data: () => ({
+			user: Laravel.user,
 			title: 'Главная',
 			error: false,
 			loading: true,
@@ -125,7 +132,7 @@
 					.catch(error => {
 						const { response } = error;
 						app.loading = false;
-						app.error = true;
+						// app.error = true;
 						
 						if (isJson(response.data)) {
 							app.message = JSON.parse(response.data).message ? JSON.parse(response.data).message : JSON.parse(response.data);
@@ -160,9 +167,7 @@
 		},
 		created() {
 			this.updateStickers();
-
-			// this.getStickers();
-
+			
 			this.$root.$emit('changeTitle', this.title);
 		}
 	}
